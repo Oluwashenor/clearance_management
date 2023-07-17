@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\FacultyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -32,3 +34,13 @@ Route::get('/forgotpassword', [UserController::class, 'forgotpassword']);
 Route::post('/forgot_password', [UserController::class, 'forgot_password']);
 Route::get('/passwordReset/{token}', [UserController::class, 'passwordReset'])->name('passwordReset');
 Route::post('/updatePassword', [UserController::class, 'updatePassword'])->name('updatePassword');
+
+//Faculties
+Route::get('/faculties', [FacultyController::class, 'index'])->name('faculties');
+Route::post('/createFaculty', [FacultyController::class, 'create']);
+Route::get('/faculty/detail/{id}', [FacultyController::class, 'detail'])->name('faculty');
+
+
+//Departments
+Route::post('/createDepartment', [DepartmentController::class, 'create']);
+Route::post('/deleteDepartment/{id}', [DepartmentController::class, 'delete']);
