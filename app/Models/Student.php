@@ -22,4 +22,9 @@ class Student extends Model
     {
         return $this->belongsTo(Department::class);
     }
+
+    public function clearance()
+    {
+        return $this->hasMany(UserClearance::class, 'student_id', 'id');
+    }
 }

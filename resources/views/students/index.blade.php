@@ -1,14 +1,14 @@
 @extends('layouts.layout')
 
 <style>
-.body-div {
-    background-color: white !important;
-    padding: 5%;
-    max-width: 80%;
-    border-radius: 3%;
-    margin-left: 13%;
-    margin-top: 3%;
-}
+    .body-div {
+        background-color: white !important;
+        padding: 5%;
+        max-width: 80%;
+        border-radius: 3%;
+        margin-left: 13%;
+        margin-top: 3%;
+    }
 </style>
 
 @section('content')
@@ -26,37 +26,67 @@
         <tbody>
             @foreach($students as $student)
             <tr>
-                <th scope="row">{{$student->user->id}}</th>
+                <th scope="row">{{$student->id}}</th>
                 <td>{{$student->user->name}}</td>
                 <td>
                     {{$student->department->name ?? "Unassigned Department"}}
                 </td>
-                <td><button type="button" data-bs-toggle="modal" data-bs-target="#editStudentModal{{$student->id}}"
-                        class="btn btn-outline-info">Edit</button></td>
+                <td><button type="button" data-bs-toggle="modal" data-bs-target="#editStudentModal{{$student->id}}" class="btn btn-outline-info">Edit</button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#studentClearanceModal{{$student->id}}" class="btn btn-outline-info">Clearance</button>
+                </td>
             </tr>
-            <div class="modal fade" id="editStudentModal{{$student->id}}" tabindex="-1"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="editStudentModal{{$student->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <form method="POST" action="/students/edit">
                             {{csrf_field()}}
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Edit {{$student->user->name}}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <input type="text" name="id" value="{{$student->id}}" hidden class="form-control"
-                                        id="exampleFormControlInput1" placeholder="">
+                                    <input type="text" name="id" value="{{$student->id}}" hidden class="form-control" id="exampleFormControlInput1" placeholder="">
                                 </div>
-                                <select required name="department_id" class="form-select form-select"
-                                    aria-label=".form-select example">
+                                <select required name="department_id" class="form-select form-select" aria-label=".form-select example">
                                     <option selected disabled>Select Department</option>
                                     @foreach($departments as $department)
                                     <option value="{{$department->id}}">{{$department->name}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="studentClearanceModal{{$student->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form method="POST" action="/students/clear">
+                            {{csrf_field()}}
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Update {{$student->user->name}}'s
+                                    Clearance</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <input type="text" name="student_id" hidden value="{{$student->id}}" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                </div>
+                                @foreach($student->clearances as $cl)
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="clearance[]" value="{{$cl->id}}" id="flexCheckDefault" {{ $cl->checked ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            {{$cl->name}}
+                                        </label>
+                                    </div>
+                                </div>
+                                @endforeach
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

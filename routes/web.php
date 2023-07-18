@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ClearanceModuleController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserClearanceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -17,9 +19,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
+Route::get('/', [StudentController::class, 'index'])->middleware('auth');
 
 //AUTH
 Route::post('/loginAction', [UserController::class, 'login']);
@@ -46,6 +46,14 @@ Route::get('/faculty/detail/{id}', [FacultyController::class, 'detail'])->name('
 Route::get('/students/index', [StudentController::class, 'students'])->name('students');
 Route::post('/students/edit', [StudentController::class, 'edit']);
 
+
+
 //Departments
 Route::post('/createDepartment', [DepartmentController::class, 'create']);
 Route::post('/deleteDepartment/{id}', [DepartmentController::class, 'delete']);
+
+//Clearance
+Route::get('/clearance-module/index', [ClearanceModuleController::class, 'index']);
+Route::post('/clearance-module/create', [ClearanceModuleController::class, 'create']);
+
+Route::post('/students/clear', [UserClearanceController::class, 'clear']);
