@@ -7,48 +7,47 @@ $appName = "Clearance";
 
 <head>
     <title>{{$appName}}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
 
     <style>
-    body {
-        font-family: "ui-sans-serif", sans-serif;
-        background-color: #F3F4F6;
-    }
+        body {
+            font-family: "ui-sans-serif", sans-serif;
+            background-color: #F3F4F6;
+        }
 
-    .nav-item {
-        margin: 0 6px;
-    }
+        .nav-item {
+            margin: 0 6px;
+        }
 
-    .titleLayer {
-        padding-top: 9px;
-        height: calc(2 * 64px);
-        background-color: white;
-    }
+        .titleLayer {
+            padding-top: 9px;
+            height: calc(2 * 64px);
+            background-color: white;
+        }
 
-    .myNav {
-        background-color: white;
-        border-bottom: 0.5px solid #cccccc;
-    }
+        .myNav {
+            background-color: white;
+            border-bottom: 0.5px solid #cccccc;
+        }
 
-    .titleHeader {
-        font-size: 140%;
-        text-align: left;
-        margin-top: 20px;
-        margin-left: 15px;
-        font-weight: bold;
-    }
+        .titleHeader {
+            font-size: 140%;
+            text-align: left;
+            margin-top: 20px;
+            margin-left: 15px;
+            font-weight: bold;
+        }
 
-    .content {
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        min-height: 100px;
-        margin-top: 4%;
-        background-color: white;
-        border-radius: 10px;
-        padding-top: 20px;
+        .content {
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            min-height: 100px;
+            margin-top: 4%;
+            background-color: white;
+            border-radius: 10px;
+            padding-top: 20px;
 
-    }
+        }
     </style>
 </head>
 
@@ -58,9 +57,7 @@ $appName = "Clearance";
         <nav class="navbar navbar-expand-lg myNav">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">{{$appName}}</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 @auth
@@ -78,14 +75,16 @@ $appName = "Clearance";
                             <a class="nav-link" href="/faculties">Falculties</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/booksRequest">Clearance</a>
+                            <a class="nav-link" href="/students/index">Students</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Clearance</a>
                         </li>
                     </ul>
                     <div class="d-flex" role="search">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li style="float: right;" class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     {{ auth()->user()->name }}
                                 </a>
 
@@ -116,9 +115,7 @@ $appName = "Clearance";
     </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
-    integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 @include('sweetalert::alert')
 

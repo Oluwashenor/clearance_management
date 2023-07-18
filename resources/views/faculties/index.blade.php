@@ -1,23 +1,21 @@
 @extends('layouts.layout')
 
 <style>
-.body-div {
-    background-color: white !important;
-    padding: 5%;
-    max-width: 80%;
-    border-radius: 3%;
-    margin-left: 13%;
-    margin-top: 3%;
-}
+    .body-div {
+        background-color: white !important;
+        padding: 5%;
+        max-width: 80%;
+        border-radius: 3%;
+        margin-left: 13%;
+        margin-top: 3%;
+    }
 </style>
 
 @section('content')
 
 <!-- Button trigger modal -->
-<div class="row"
-    style="display:flex;justify-content:space-between;margin-top:1%;height:50px;margin-left:20px;width:95%;">
-    <button style="width: 150px;" type="button" class="btn btn-primary" data-bs-toggle="modal"
-        data-bs-target="#addFacultyModal">
+<div class="row" style="display:flex;justify-content:space-between;margin-top:1%;height:50px;margin-left:20px;width:95%;">
+    <button style="width: 150px;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addFacultyModal">
         Add Faculty
     </button>
 </div>
@@ -35,13 +33,11 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" id="exampleFormControlInput1"
-                            placeholder="">
+                        <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="">
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Dean</label>
-                        <input type="text" name="dean" class="form-control" id="exampleFormControlInput1"
-                            placeholder="">
+                        <input type="text" name="dean" class="form-control" id="exampleFormControlInput1" placeholder="">
                     </div>
                 </div>
                 <div class="modal-footer">

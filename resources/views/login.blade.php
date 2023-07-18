@@ -20,7 +20,7 @@
                     <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up" />
+                    <input type="submit" name="submit" id="submit" class="form-submit" value="Sign In" />
                 </div>
             </form>
             <p class="loginhere">

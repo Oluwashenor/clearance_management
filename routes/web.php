@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -40,6 +41,10 @@ Route::get('/faculties', [FacultyController::class, 'index'])->name('faculties')
 Route::post('/createFaculty', [FacultyController::class, 'create']);
 Route::get('/faculty/detail/{id}', [FacultyController::class, 'detail'])->name('faculty');
 
+
+//Students
+Route::get('/students/index', [StudentController::class, 'students'])->name('students');
+Route::post('/students/edit', [StudentController::class, 'edit']);
 
 //Departments
 Route::post('/createDepartment', [DepartmentController::class, 'create']);

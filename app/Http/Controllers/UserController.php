@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Student;
 
 class UserController extends Controller
 {
@@ -33,7 +34,11 @@ class UserController extends Controller
             'role' => $role,
             'token' => '',
         ]);
-        $user->save();
+        if ($user->role == 'student') {
+            Student::create([
+                'user_id' => $user->id
+            ]);
+        }
         toast('Account Created, Please Proceed to Login', 'info');
         return redirect('/login');
     }
