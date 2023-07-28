@@ -14,11 +14,14 @@ class StudentController extends Controller
 
     public function index()
     {
+        if (Auth::user()->role == 'admin') {
+            return redirect('/faculties');
+        }
         $modules = ClearanceModule::all();
         $user_id = Auth::user()->id;
         $user = User::find($user_id);
         $user->cleared = false;
-        $user->student->department;
+        $user->student->department ?? "unassigned";
         $cls = $user->student->clearance;
         $user->clearances = $modules;
         $cleared =  array_column($cls->toArray(), 'clearance_id');

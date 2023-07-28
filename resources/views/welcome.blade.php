@@ -14,8 +14,11 @@
 
 @section('content')
 
+
 <div class="body-div">
     <h1 class="display-6"> {{Auth::user()->name}}</h1>
+    @if($user->student->department != null)
+
     <h1 class="display-6" style="font-size: small;"> {{$user->student->department->name}}</h1>
     <hr>
     <h5>Departments to be Cleared </h5>
@@ -36,7 +39,11 @@
         </blockquote>
 
     </dl>
-
+    @else
+    <h1 class="display-6" style="font-size: small;">You have not been assigned a department</h1>
+    @endif
 </div>
+
+
 
 @endsection
